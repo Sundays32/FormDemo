@@ -1,0 +1,154 @@
+<div class="form-body">
+  <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="id">ID:</label>
+      <input type="text" id="id" formControlName="id" />
+      <div
+        *ngIf="
+          employeeForm.get('id')?.invalid &&
+          (employeeForm.get('id')?.dirty || employeeForm.get('id')?.touched)
+        "
+      >
+        <div *ngIf="employeeForm.get('id')">Name is required.</div>
+      </div>
+    </div>
+    <div>
+      <label for="dob">Date of Birth:</label>
+      <input type="date" id="dob" formControlName="dob" />
+      <div
+        *ngIf="
+          employeeForm.get('dob')?.invalid &&
+          (employeeForm.get('dob')?.dirty || employeeForm.get('dob')?.touched)
+        "
+      >
+        <div *ngIf="employeeForm.get('dob')">Date of Birth is required.</div>
+        <div *ngIf="employeeForm.get('dob')?.hasError('tooYoung')">
+          You must be at least 18 years old.
+        </div>
+      </div>
+    </div>
+    <div>
+      <label for="gender">Gender:</label>
+      <input
+        type="radio"
+        id="gender"
+        name="gender"
+        value="male"
+        formControlName="gender"
+      />
+      <label for="gender">Male</label>
+      <input
+        type="radio"
+        id="gender"
+        name="gender"
+        value="female"
+        formControlName="gender"
+      />
+      <label for="gender">Female</label>
+      <div
+        *ngIf="
+          employeeForm.get('gender')?.invalid &&
+          (employeeForm.get('gender')?.dirty ||
+            employeeForm.get('gender')?.touched)
+        "
+      >
+        <div *ngIf="employeeForm.get('gender')">Gender is required.</div>
+      </div>
+    </div>
+    <div>
+      <label for="contact">Contact</label>
+      <input type="tel" id="phone" name="phone" formControlName="contact" />
+      <div
+        *ngIf="
+          employeeForm.get('contact')?.invalid &&
+          (employeeForm.get('contact')?.dirty ||
+            employeeForm.get('contact')?.touched)
+        "
+      >
+        <div *ngIf="employeeForm.get('contact')">Contact is required.</div>
+      </div>
+    </div>
+    <div>
+      <label for="email">Email:</label>
+      <input type="email" id="email" formControlName="email" />
+      <div
+        *ngIf="
+          employeeForm.get('email')?.invalid &&
+          (employeeForm.get('email')?.dirty ||
+            employeeForm.get('email')?.touched)
+        "
+      >
+        <div *ngIf="employeeForm.get('email')">Email is required.</div>
+      </div>
+    </div>
+    <div>
+      <label for="address">Address:</label>
+      <input type="text" id="address" formControlName="address" />
+      <div
+        *ngIf="
+          employeeForm.get('address')?.invalid &&
+          (employeeForm.get('address')?.dirty ||
+            employeeForm.get('address')?.touched)
+        "
+      >
+        <div *ngIf="employeeForm.get('address')">Address is required.</div>
+      </div>
+    </div>
+    <div>
+      <label for="job">Job Title:</label>
+      <input type="text" id="job" formControlName="job" />
+      <div
+        *ngIf="
+          employeeForm.get('job')?.invalid &&
+          (employeeForm.get('job')?.dirty || employeeForm.get('job')?.touched)
+        "
+      >
+        <div *ngIf="employeeForm.get('job')">Job Title is required.</div>
+      </div>
+    </div>
+    <div>
+      <label for="dept">Department:</label>
+      <input type="text" id="dept" formControlName="dept" />
+      <div
+        *ngIf="
+          employeeForm.get('dept')?.invalid &&
+          (employeeForm.get('dept')?.dirty || employeeForm.get('dept')?.touched)
+        "
+      >
+        <div *ngIf="employeeForm.get('dept')">Department is required.</div>
+      </div>
+    </div>
+    <div>
+      <label for="salary">Salary:</label>
+      <input type="number" id="salary" formControlName="salary" />
+      <div
+        *ngIf="
+          employeeForm.get('salary')?.invalid &&
+          (employeeForm.get('salary')?.dirty ||
+            employeeForm.get('salary')?.touched)
+        "
+      >
+        <div *ngIf="employeeForm.get('salary')">Department is required.</div>
+      </div>
+    </div>
+    <div>
+      <label for="doj">Hire Date:</label>
+      <input type="date" id="doj" formControlName="doj" />
+      <div
+        *ngIf="
+          employeeForm.get('doj')?.invalid &&
+          (employeeForm.get('doj')?.dirty || employeeForm.get('doj')?.touched)
+        "
+      >
+        <div *ngIf="employeeForm.get('doj')?.hasError('required')">
+          Hire Date is required.
+        </div>
+        <div *ngIf="employeeForm.get('doj')?.hasError('futureDate')">
+          Hire date cannot be in the future.
+        </div>
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="employeeForm.invalid">Submit</button>
+  </form>
+</div>
